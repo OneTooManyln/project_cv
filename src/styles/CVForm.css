@@ -1,0 +1,27 @@
+.CVForm-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  max-width: 1000px;
+  max-height: 1200px;
+  width: 100%;
+}
+
+.CVForm-header {
+  background-color: #065f46;
+  color: white;
+}
+
+.CVForm-main {
+  display: flew;
+}
+
+.education-section-header,
+.experience-section-header {
+  color: #065f46;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
