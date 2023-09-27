@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  max-width: 1000px;
+  max-width: 800px;
   max-height: 1200px;
   width: 100%;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.267);
+  padding-bottom: 300px;
 }
 
 .CVForm-header {
@@ -16,12 +18,36 @@
   display: flew;
 }
 
+.CVForm-main-education-section,
+.CVForm-main-experience-section {
+  padding: 0px 60px;
+  margin-top: 40px;
+}
+
 .education-section-header,
 .experience-section-header {
   color: #065f46;
+  background-color: rgba(128, 128, 128, 0.26);
+  padding: 5px;
+}
+
+.education-section-preview-info,
+.experience-section-preview-info {
+  display: flex;
+  gap: 30px;
+  font-size: 1.2rem;
+  margin-top: 25px;
 }
 
 h1,
-h2 {
+h2,
+h3 {
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
