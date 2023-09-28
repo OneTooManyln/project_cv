@@ -44,6 +44,11 @@ export default function CVForm() {
                   <strong>Wayne Enterprises, Inc.</strong>{" "}
                 </p>
                 <p>CEO</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                  ornare, sapien at dignissim lobortis, lectus lorem commodo
+                  risus, non sollicitudin velit urna ut libero.
+                </p>
               </div>
             </div>
           </div>
