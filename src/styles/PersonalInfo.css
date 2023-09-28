@@ -1,0 +1,10 @@
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: #065f46;
+  height: 200px;
+  width: 300px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.267);
+  padding: 10px 20px;
+}
