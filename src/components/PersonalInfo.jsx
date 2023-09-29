@@ -6,7 +6,7 @@ export default function PersonalInfo({
   phoneNumber = "123-456-7890",
 }) {
   return (
-    <form className="personal-info">
+    <form className="personal-info" autocomplete="off">
       <div className="personal-info-header">
         <h2>Personal Info</h2>
       </div>

@@ -2,7 +2,7 @@ import "../styles/EducationInfo.css";
 
 export default function EduactionInfo() {
   return (
-    <form className="education-info">
+    <form className="education-info" autocomplete="off">
       <div className="education-info-header">
         <h2>Education Info</h2>
       </div>

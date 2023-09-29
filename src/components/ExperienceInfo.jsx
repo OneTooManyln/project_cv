@@ -2,7 +2,7 @@ import "../styles/ExperienceInfo.css";
 
 export default function ExperienceInfo() {
   return (
-    <form className="experience-info">
+    <form className="experience-info" autocomplete="off">
       <div className="experience-info-header">
         <h2>Experience Info</h2>
       </div>
