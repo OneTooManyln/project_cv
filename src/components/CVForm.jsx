@@ -9,9 +9,6 @@ export default function CVForm() {
             <h1>Bruce Wayne</h1>
           </div>
           <div className="header-info">
-            <div className="header-info-name">
-              <p>Bruce Wayne</p>
-            </div>
             <div className="header-info-email">
               <p>yourEmail@gmail.com</p>
             </div>
