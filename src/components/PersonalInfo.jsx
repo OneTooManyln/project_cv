@@ -9,29 +9,29 @@ export default function PersonalInfo({
     <form className="personal-info">
       <div className="personal-info-header">
         <h2>Personal Info</h2>
-        <input
-          type="text"
-          id="fullName"
-          name="fullName"
-          placeholder={fullName}
-          required
-        />
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder={email}
-          required
-        />
-
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder={phoneNumber}
-          required
-        />
       </div>
+      <input
+        type="text"
+        id="fullName"
+        name="fullName"
+        placeholder={fullName}
+        required
+      />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder={email}
+        required
+      />
+
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder={phoneNumber}
+        required
+      />
     </form>
   );
 }
