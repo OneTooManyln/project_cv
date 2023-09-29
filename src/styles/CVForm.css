@@ -12,6 +12,12 @@
 .CVForm-header {
   background-color: #065f46;
   color: white;
+  padding: 20px 0px;
+}
+
+.header-info {
+  text-align: center;
+  font-size: 1.1rem;
 }
 
 .CVForm-main {

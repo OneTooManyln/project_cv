@@ -8,7 +8,18 @@ export default function CVForm() {
           <div className="header-name">
             <h1>Bruce Wayne</h1>
           </div>
-          <div className="header-info"></div>
+          <div className="header-info">
+            <div className="header-info-name">
+              <p>Bruce Wayne</p>
+            </div>
+            <div className="header-info-email">
+              <p>yourEmail@gmail.com</p>
+            </div>
+            <div className="header-info-number">
+              <p>123-456-7890</p>
+            </div>
+            <div className="header-info-experience"></div>
+          </div>
         </div>
         <div className="CVForm-main">
           <div className="CVForm-main-education-section">
@@ -22,8 +33,7 @@ export default function CVForm() {
               </div>
               <div className="preview-info-degree">
                 <p>
-                  {" "}
-                  <strong>Yale university at Gotham</strong>{" "}
+                  <strong>Yale university at Gotham</strong>
                 </p>
                 <p>Law Degree</p>
               </div>
@@ -40,8 +50,7 @@ export default function CVForm() {
               </div>
               <div className="preview-info-degree">
                 <p>
-                  {" "}
-                  <strong>Wayne Enterprises, Inc.</strong>{" "}
+                  <strong>Wayne Enterprises, Inc.</strong>
                 </p>
                 <p>CEO</p>
                 <p>
