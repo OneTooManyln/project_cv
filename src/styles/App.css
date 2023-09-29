@@ -22,3 +22,9 @@ input {
   padding: 5px 10px;
   margin-bottom: 20px;
 }
+
+input:focus {
+  outline: 2px solid #065f46;
+  border-radius: 5px;
+  border: none;
+}
