@@ -3,6 +3,7 @@ import "../styles/App.css";
 import CVForm from "./CVForm";
 import PersonalInfo from "./PersonalInfo";
 import EduactionInfo from "./EducationInfo";
+import ExperienceInfo from "./ExperienceInfo";
 
 export default function App() {
   return (
@@ -10,8 +11,8 @@ export default function App() {
       <div className="form-inputs">
         <PersonalInfo />
         <EduactionInfo />
+        <ExperienceInfo />
       </div>
-
       <CVForm />
     </div>
   );

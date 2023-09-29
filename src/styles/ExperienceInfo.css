@@ -1,0 +1,14 @@
+.experience-info {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: #065f46;
+  height: auto;
+  width: 300px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.267);
+  padding: 10px 20px 40px;
+}
+
+.experience-info-header {
+  margin-bottom: 20px;
+}
