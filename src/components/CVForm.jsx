@@ -1,19 +1,19 @@
 import "../styles/CVForm.css";
 
-export default function CVForm() {
+export default function CVForm({ name, email, number }) {
   return (
     <>
       <div className="CVForm-container">
         <div className="CVForm-header">
           <div className="header-name">
-            <h1>Bruce Wayne</h1>
+            <h1>{name}</h1>
           </div>
           <div className="header-info">
             <div className="header-info-email">
-              <p>yourEmail@gmail.com</p>
+              <p>{email}</p>
             </div>
             <div className="header-info-number">
-              <p>123-456-7890</p>
+              <p>{number}</p>
             </div>
             <div className="header-info-experience"></div>
           </div>
