@@ -12,17 +12,3 @@
 .experience-info-header {
   margin-bottom: 20px;
 }
-
-.education-info-add-new-btn-container {
-  display: flex;
-  justify-content: center;
-}
-
-.add-new-btn {
-  border: 2px solid #065f46;
-  border-radius: 7px;
-  color: #065f46;
-  background-color: white;
-  padding: 10px 20px;
-  font-size: 1.1rem;
-}
