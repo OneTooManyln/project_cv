@@ -4,6 +4,10 @@ import "../styles/CVForm.css";
 export default function CVForm({ name, email, number, educationSections }) {
   const isEducationEmpty = educationSections.length === 0;
 
+  const renderEducationData = isEducationEmpty
+    ? DefaultEducationData
+    : educationSections;
+
   return (
     <>
       <div className="CVForm-container">
@@ -26,35 +30,20 @@ export default function CVForm({ name, email, number, educationSections }) {
             <div className="education-section-header">
               <h2>Education</h2>
             </div>
-            {isEducationEmpty
-              ? DefaultEducationData.map((education, index) => (
-                  <div key={index} className="education-section-preview-info">
-                    <div className="preview-info-date">
-                      <p>{education.date}</p>
-                      <p>{education.location}</p>
-                    </div>
-                    <div className="preview-info-degree">
-                      <p>
-                        <strong>{education.school}</strong>
-                      </p>
-                      <p>{education.degree}</p>
-                    </div>
-                  </div>
-                ))
-              : educationSections.map((education, index) => (
-                  <div key={index} className="education-section-preview-info">
-                    <div className="preview-info-date">
-                      <p>{education.date}</p>
-                      <p>{education.location}</p>
-                    </div>
-                    <div className="preview-info-degree">
-                      <p>
-                        <strong>{education.school}</strong>
-                      </p>
-                      <p>{education.degree}</p>
-                    </div>
-                  </div>
-                ))}
+            {renderEducationData.map((education, index) => (
+              <div key={index} className="education-section-preview-info">
+                <div className="preview-info-date">
+                  <p>{education.date}</p>
+                  <p>{education.location}</p>
+                </div>
+                <div className="preview-info-degree">
+                  <p>
+                    <strong>{education.school}</strong>
+                  </p>
+                  <p>{education.degree}</p>
+                </div>
+              </div>
+            ))}
           </div>
           <div className="CVForm-main-experience-section">
             <div className="experience-section-header">
