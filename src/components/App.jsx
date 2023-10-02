@@ -9,6 +9,12 @@ export default function App() {
   const [name, setName] = useState("Bruce Wayne");
   const [email, setEmail] = useState("yourEmail@gmail.com");
   const [number, setNumber] = useState("123-456-7890");
+  const [educationSections, setEducationSections] = useState([]);
+
+  const addEducation = (newEducation) => {
+    setEducationSections([...educationSections, newEducation]);
+  };
+
   return (
     <div className="app">
       <div className="form-inputs">
@@ -20,10 +26,15 @@ export default function App() {
           onEmailChange={setEmail}
           onNumberChange={setNumber}
         />
-        <EduactionInfo />
+        <EduactionInfo onSaveEducation={addEducation} />
         <ExperienceInfo />
       </div>
-      <CVForm name={name} email={email} number={number} />
+      <CVForm
+        name={name}
+        email={email}
+        number={number}
+        educationSections={educationSections}
+      />
     </div>
   );
 }
