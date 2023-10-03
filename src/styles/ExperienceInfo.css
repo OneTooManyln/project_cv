@@ -1,4 +1,4 @@
-.experience-info {
+.experience-info-container {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -11,4 +11,9 @@
 
 .experience-info-header {
   margin-bottom: 20px;
+}
+
+.experience-info-add-new-btn-container {
+  display: flex;
+  justify-content: center;
 }
