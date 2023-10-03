@@ -1,7 +1,11 @@
 import { useState } from "react";
 import "../styles/ExperienceInfo.css";
 
-export default function ExperienceInfo() {
+export default function ExperienceInfo({ onSaveExperience }) {
+  const [companyValue, setCompanyValue] = useState("");
+  const [positionValue, setPositionValue] = useState("");
+  const [dateValue, setDateValue] = useState("");
+  const [locationValue, setLocationValue] = useState("");
   const [isExperienceFormVisible, setIsExperienceFormVisible] = useState(false);
   const [isAddButtonVisible, setIsAddButtonVisible] = useState(true);
 
@@ -11,8 +15,31 @@ export default function ExperienceInfo() {
   };
 
   const handleCancel = () => {
+    setCompanyValue("");
+    setPositionValue("");
+    setDateValue("");
+    setLocationValue("");
+
     setIsExperienceFormVisible(false);
     setIsAddButtonVisible(true);
+  };
+
+  const handleSave = (event) => {
+    event.preventDefault();
+
+    const newExperience = {
+      company: companyValue,
+      position: positionValue,
+      date: dateValue,
+      location: locationValue,
+    };
+
+    onSaveExperience(newExperience);
+
+    setCompanyValue("");
+    setPositionValue("");
+    setDateValue("");
+    setLocationValue("");
   };
 
   return (
@@ -29,18 +56,24 @@ export default function ExperienceInfo() {
                 id="company-name"
                 name="company-name"
                 placeholder="Company Name"
+                value={companyValue}
+                onChange={(e) => setCompanyValue(e.target.value)}
               />
               <input
                 type="text"
                 id="Position"
                 name="Position"
                 placeholder="Position"
+                value={positionValue}
+                onChange={(e) => setPositionValue(e.target.value)}
               />
               <input
                 type="text"
                 id="date"
                 name="date"
                 placeholder="Start Date - End Date"
+                value={dateValue}
+                onChange={(e) => setDateValue(e.target.value)}
                 required
               />
               <input
@@ -48,6 +81,8 @@ export default function ExperienceInfo() {
                 id="location"
                 name="location"
                 placeholder="Location"
+                value={locationValue}
+                onChange={(e) => setLocationValue(e.target.value)}
                 required
               />
             </div>
@@ -55,7 +90,7 @@ export default function ExperienceInfo() {
               <button className="cancel-btn" onClick={handleCancel}>
                 Cancel
               </button>
-              <button className="save-btn" type="submit">
+              <button className="save-btn" type="submit" onClick={handleSave}>
                 Save
               </button>
             </div>

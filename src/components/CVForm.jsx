@@ -1,12 +1,24 @@
 import DefaultEducationData from "./DefaultEducationData";
+import DefaultExperienceData from "./DefaultExperienceData";
 import "../styles/CVForm.css";
 
-export default function CVForm({ name, email, number, educationSections }) {
+export default function CVForm({
+  name,
+  email,
+  number,
+  educationSections,
+  experienceSections,
+}) {
   const isEducationEmpty = educationSections.length === 0;
+  const isExperienceEmpty = experienceSections.length === 0;
 
   const renderEducationData = isEducationEmpty
     ? DefaultEducationData
     : educationSections;
+
+  const renderExperienceData = isExperienceEmpty
+    ? DefaultExperienceData
+    : experienceSections;
 
   return (
     <>
@@ -49,23 +61,25 @@ export default function CVForm({ name, email, number, educationSections }) {
             <div className="experience-section-header">
               <h2>Work Experience</h2>
             </div>
-            <div className="experience-section-preview-info">
-              <div className="preview-info-date">
-                <p>???-???</p>
-                <p>Gotham City, US</p>
+            {renderExperienceData.map((experience, index) => (
+              <div key={index} className="experience-section-preview-info">
+                <div className="preview-info-date">
+                  <p>{experience.date}</p>
+                  <p>{experience.location}</p>
+                </div>
+                <div className="preview-info-degree">
+                  <p>
+                    <strong>{experience.company}</strong>
+                  </p>
+                  <p>{experience.position}</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Morbi ornare, sapien at dignissim lobortis, lectus lorem
+                    commodo risus, non sollicitudin velit urna ut libero.
+                  </p>
+                </div>
               </div>
-              <div className="preview-info-degree">
-                <p>
-                  <strong>Wayne Enterprises, Inc.</strong>
-                </p>
-                <p>CEO</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                  ornare, sapien at dignissim lobortis, lectus lorem commodo
-                  risus, non sollicitudin velit urna ut libero.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
