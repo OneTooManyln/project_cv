@@ -6,6 +6,7 @@ export default function ExperienceInfo({ onSaveExperience }) {
   const [positionValue, setPositionValue] = useState("");
   const [dateValue, setDateValue] = useState("");
   const [locationValue, setLocationValue] = useState("");
+  const [descriptionValue, setDescriptionValue] = useState("");
   const [isExperienceFormVisible, setIsExperienceFormVisible] = useState(false);
   const [isAddButtonVisible, setIsAddButtonVisible] = useState(true);
 
@@ -19,6 +20,7 @@ export default function ExperienceInfo({ onSaveExperience }) {
     setPositionValue("");
     setDateValue("");
     setLocationValue("");
+    setDescriptionValue("");
 
     setIsExperienceFormVisible(false);
     setIsAddButtonVisible(true);
@@ -32,6 +34,7 @@ export default function ExperienceInfo({ onSaveExperience }) {
       position: positionValue,
       date: dateValue,
       location: locationValue,
+      description: descriptionValue,
     };
 
     onSaveExperience(newExperience);
@@ -40,6 +43,7 @@ export default function ExperienceInfo({ onSaveExperience }) {
     setPositionValue("");
     setDateValue("");
     setLocationValue("");
+    setDescriptionValue("");
   };
 
   return (
@@ -85,6 +89,15 @@ export default function ExperienceInfo({ onSaveExperience }) {
                 onChange={(e) => setLocationValue(e.target.value)}
                 required
               />
+              <textarea
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Description Of Employment"
+                value={descriptionValue}
+                onChange={(e) => setDescriptionValue(e.target.value)}
+                required
+              ></textarea>
             </div>
             <div className="buttons-container">
               <button className="cancel-btn" onClick={handleCancel}>

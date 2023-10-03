@@ -72,11 +72,7 @@ export default function CVForm({
                     <strong>{experience.company}</strong>
                   </p>
                   <p>{experience.position}</p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Morbi ornare, sapien at dignissim lobortis, lectus lorem
-                    commodo risus, non sollicitudin velit urna ut libero.
-                  </p>
+                  <p>{experience.description}</p>
                 </div>
               </div>
             ))}
