@@ -34,3 +34,9 @@
   padding: 10px 20px;
   font-size: 1.1rem;
 }
+
+.add-new-btn:hover,
+.cancel-btn:hover,
+.save-btn:hover {
+  cursor: pointer;
+}
