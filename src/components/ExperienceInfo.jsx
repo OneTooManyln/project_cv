@@ -3,6 +3,8 @@ import "../styles/ExperienceInfo.css";
 
 export default function ExperienceInfo({
   onSaveExperience,
+  onDeleteExperience,
+  onEditExperience,
   experienceSections,
 }) {
   const [companyValue, setCompanyValue] = useState("");
@@ -12,6 +14,9 @@ export default function ExperienceInfo({
   const [descriptionValue, setDescriptionValue] = useState("");
   const [isExperienceFormVisible, setIsExperienceFormVisible] = useState(false);
   const [isAddButtonVisible, setIsAddButtonVisible] = useState(true);
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false);
+  const [selectedSection, setSelectedSection] = useState(null);
+  const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
 
   const handleAddExperience = () => {
     setIsExperienceFormVisible(true);
@@ -25,7 +30,10 @@ export default function ExperienceInfo({
     setLocationValue("");
     setDescriptionValue("");
 
+    setSelectedSection(null);
+    setSelectedSectionIndex(null);
     setIsExperienceFormVisible(false);
+    setIsEditFormVisible(false);
     setIsAddButtonVisible(true);
   };
 
@@ -40,7 +48,9 @@ export default function ExperienceInfo({
       description: descriptionValue,
     };
 
-    onSaveExperience(newExperience);
+    if (selectedSection) {
+      onEditExperience(selectedSectionIndex, newExperience);
+    } else onSaveExperience(newExperience);
 
     setCompanyValue("");
     setPositionValue("");
@@ -48,8 +58,41 @@ export default function ExperienceInfo({
     setLocationValue("");
     setDescriptionValue("");
 
+    setSelectedSection(null);
+    setSelectedSectionIndex(null);
     setIsExperienceFormVisible(false);
+    setIsEditFormVisible(false);
     setIsAddButtonVisible(true);
+  };
+
+  const handleDelete = () => {
+    setCompanyValue("");
+    setPositionValue("");
+    setDateValue("");
+    setLocationValue("");
+    setDescriptionValue("");
+
+    setIsExperienceFormVisible(false);
+    setIsEditFormVisible(false);
+    setIsAddButtonVisible(true);
+    setSelectedSection(null);
+    setSelectedSectionIndex(null);
+
+    onDeleteExperience(selectedSection);
+  };
+
+  const handleEdit = (section, index) => {
+    setSelectedSection(section);
+    setSelectedSectionIndex(index);
+    setIsExperienceFormVisible(true);
+    setIsEditFormVisible(true);
+    setIsAddButtonVisible(false);
+
+    setCompanyValue(section.company);
+    setPositionValue(section.position);
+    setDateValue(section.date);
+    setLocationValue(section.location);
+    setDescriptionValue(section.description);
   };
 
   return (
@@ -116,15 +159,28 @@ export default function ExperienceInfo({
               <button className="save-btn" type="submit">
                 Save
               </button>
+              {isEditFormVisible && (
+                <button
+                  className="delete-btn"
+                  type="submit"
+                  onClick={handleDelete}
+                >
+                  Delete
+                </button>
+              )}
             </div>
           </form>
         )}
-        {isAddButtonVisible && (
+        {isAddButtonVisible && !isEditFormVisible && (
           <div className="experience-info-main">
             {experienceSections.length > 0 && (
               <div className="sections-container">
                 {experienceSections.map((section, index) => (
-                  <div className="section-form" key={index}>
+                  <div
+                    className="section-form"
+                    key={index}
+                    onClick={() => handleEdit(section, index)}
+                  >
                     <h3>{section.company}</h3>
                   </div>
                 ))}

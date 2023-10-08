@@ -32,6 +32,18 @@ export default function App() {
     setEducationSections(updatedEducationSections);
   };
 
+  const editExperience = (index, updatedExperience) => {
+    const updatedExperienceSections = [...experienceSections];
+    updatedExperienceSections[index] = updatedExperience;
+    setExperienceSections(updatedExperienceSections);
+  };
+
+  const deleteExperience = (index) => {
+    const updatedExperienceSections = [...experienceSections];
+    updatedExperienceSections.splice(index, 1);
+    setExperienceSections(updatedExperienceSections);
+  };
+
   return (
     <div className="app">
       <div className="form-inputs">
@@ -52,6 +64,8 @@ export default function App() {
         <ExperienceInfo
           onSaveExperience={addExperience}
           experienceSections={experienceSections}
+          onEditExperience={editExperience}
+          onDeleteExperience={deleteExperience}
         />
       </div>
       <CVForm
