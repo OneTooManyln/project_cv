@@ -1,20 +1,30 @@
 import { useState } from "react";
 import "../styles/EducationInfo.css";
 
-export default function EduactionInfo({ onSaveEducation, educationSections }) {
+export default function EduactionInfo({
+  onSaveEducation,
+  onEditEducation,
+  onDeleteEducation,
+  educationSections,
+}) {
   const [schoolValue, setSchoolValue] = useState("");
   const [degreeValue, setDegreeValue] = useState("");
   const [dateValue, setDateValue] = useState("");
   const [locationValue, setLocationValue] = useState("");
   const [isEducationFormVisible, setIsEducationFormVisible] = useState(false);
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const [isAddButtonVisible, setIsAddButtonVisible] = useState(true);
+  const [selectedSection, setSelectedSection] = useState(null);
+  const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
 
   const handleAddEducation = () => {
+    console.log("Call to handleAdd");
     setIsEducationFormVisible(!isEducationFormVisible);
     setIsAddButtonVisible(!isAddButtonVisible);
   };
 
   const handleSaveEducation = (event) => {
+    console.log("Call to handleSave");
     event.preventDefault();
 
     const newEducation = {
@@ -24,25 +34,66 @@ export default function EduactionInfo({ onSaveEducation, educationSections }) {
       location: locationValue,
     };
 
-    onSaveEducation(newEducation);
+    if (selectedSection) {
+      onEditEducation(selectedSectionIndex, newEducation);
+      console.log("Edit form");
+    } else {
+      onSaveEducation(newEducation);
+    }
 
     setSchoolValue("");
     setDegreeValue("");
     setDateValue("");
     setLocationValue("");
 
+    setSelectedSection(null);
+    setSelectedSectionIndex(null);
     setIsEducationFormVisible(false);
+    setIsEditFormVisible(false);
     setIsAddButtonVisible(true);
   };
 
   const handleCancel = () => {
+    console.log("Call to handleCancel");
+    setSchoolValue("");
+    setDegreeValue("");
+    setDateValue("");
+    setLocationValue("");
+
+    setSelectedSection(null);
+    setSelectedSectionIndex(null);
+    setIsEducationFormVisible(false);
+    setIsEditFormVisible(false);
+    setIsAddButtonVisible(true);
+  };
+
+  const handleEdit = (section, index) => {
+    console.log("Call to handleEdit");
+    setSelectedSection(section);
+    setSelectedSectionIndex(index);
+    setIsEducationFormVisible(true);
+    setIsEditFormVisible(true);
+    setIsAddButtonVisible(false);
+
+    setSchoolValue(section.school);
+    setDegreeValue(section.degree);
+    setDateValue(section.date);
+    setLocationValue(section.location);
+  };
+
+  const handleDelete = () => {
     setSchoolValue("");
     setDegreeValue("");
     setDateValue("");
     setLocationValue("");
 
     setIsEducationFormVisible(false);
+    setIsEditFormVisible(false);
     setIsAddButtonVisible(true);
+    setSelectedSection(null);
+    setSelectedSectionIndex(null);
+
+    onDeleteEducation(selectedSection);
   };
 
   return (
@@ -101,15 +152,24 @@ export default function EduactionInfo({ onSaveEducation, educationSections }) {
               <button className="save-btn" type="submit">
                 Save
               </button>
+              {isEditFormVisible && (
+                <div className="delete-btn" onClick={handleDelete}>
+                  Delete
+                </div>
+              )}
             </div>
           </form>
         )}
-        {isAddButtonVisible && (
+        {isAddButtonVisible && !isEditFormVisible && (
           <div className="education-info-main">
             {educationSections.length > 0 && (
               <div className="education-info-sections-container">
                 {educationSections.map((section, index) => (
-                  <div className="section-form" key={index}>
+                  <div
+                    className="section-form"
+                    key={index}
+                    onClick={() => handleEdit(section, index)}
+                  >
                     <h3>{section.school}</h3>
                   </div>
                 ))}
