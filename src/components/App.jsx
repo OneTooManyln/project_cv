@@ -35,7 +35,10 @@ export default function App() {
           onSaveEducation={addEducation}
           educationSections={educationSections}
         />
-        <ExperienceInfo onSaveExperience={addExperience} />
+        <ExperienceInfo
+          onSaveExperience={addExperience}
+          experienceSections={experienceSections}
+        />
       </div>
       <CVForm
         name={name}

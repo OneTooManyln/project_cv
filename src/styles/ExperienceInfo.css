@@ -13,6 +13,18 @@
   margin-bottom: 20px;
 }
 
+.experience-info-main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .experience-info-add-new-btn-container {
   display: flex;
   justify-content: center;

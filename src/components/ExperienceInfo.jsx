@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "../styles/ExperienceInfo.css";
 
-export default function ExperienceInfo({ onSaveExperience }) {
+export default function ExperienceInfo({
+  onSaveExperience,
+  experienceSections,
+}) {
   const [companyValue, setCompanyValue] = useState("");
   const [positionValue, setPositionValue] = useState("");
   const [dateValue, setDateValue] = useState("");
@@ -44,6 +47,9 @@ export default function ExperienceInfo({ onSaveExperience }) {
     setDateValue("");
     setLocationValue("");
     setDescriptionValue("");
+
+    setIsExperienceFormVisible(false);
+    setIsAddButtonVisible(true);
   };
 
   return (
@@ -53,7 +59,11 @@ export default function ExperienceInfo({ onSaveExperience }) {
           <h2>Experience Info</h2>
         </div>
         {isExperienceFormVisible && (
-          <form className="experience-info" autoComplete="off">
+          <form
+            className="experience-info"
+            autoComplete="off"
+            onSubmit={handleSave}
+          >
             <div className="inputs-container">
               <input
                 type="text"
@@ -62,6 +72,7 @@ export default function ExperienceInfo({ onSaveExperience }) {
                 placeholder="Company Name"
                 value={companyValue}
                 onChange={(e) => setCompanyValue(e.target.value)}
+                required
               />
               <input
                 type="text"
@@ -96,24 +107,34 @@ export default function ExperienceInfo({ onSaveExperience }) {
                 placeholder="Description Of Employment"
                 value={descriptionValue}
                 onChange={(e) => setDescriptionValue(e.target.value)}
-                required
               ></textarea>
             </div>
             <div className="buttons-container">
               <button className="cancel-btn" onClick={handleCancel}>
                 Cancel
               </button>
-              <button className="save-btn" type="submit" onClick={handleSave}>
+              <button className="save-btn" type="submit">
                 Save
               </button>
             </div>
           </form>
         )}
         {isAddButtonVisible && (
-          <div className="experience-info-add-new-btn-container">
-            <button className="add-new-btn" onClick={handleAddExperience}>
-              <p>+ Add New</p>
-            </button>
+          <div className="experience-info-main">
+            {experienceSections.length > 0 && (
+              <div className="sections-container">
+                {experienceSections.map((section, index) => (
+                  <div className="section-form" key={index}>
+                    <h3>{section.company}</h3>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="experience-info-add-new-btn-container">
+              <button className="add-new-btn" onClick={handleAddExperience}>
+                <p>+ Add New</p>
+              </button>
+            </div>
           </div>
         )}
       </div>
