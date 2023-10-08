@@ -13,6 +13,22 @@
   margin-bottom: 20px;
 }
 
+.education-info-main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.section-form {
+  color: black;
+  border-top: 2px solid rgb(128, 128, 128, 0.26);
+  padding: 10px 10px;
+}
+
+.section-form:hover {
+  cursor: pointer;
+}
+
 .education-info-add-new-btn-container {
   display: flex;
   justify-content: center;

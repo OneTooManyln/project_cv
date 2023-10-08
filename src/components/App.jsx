@@ -31,7 +31,10 @@ export default function App() {
           onEmailChange={setEmail}
           onNumberChange={setNumber}
         />
-        <EduactionInfo onSaveEducation={addEducation} />
+        <EduactionInfo
+          onSaveEducation={addEducation}
+          educationSections={educationSections}
+        />
         <ExperienceInfo onSaveExperience={addExperience} />
       </div>
       <CVForm

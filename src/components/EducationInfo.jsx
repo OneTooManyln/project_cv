@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles/EducationInfo.css";
 
-export default function EduactionInfo({ onSaveEducation }) {
+export default function EduactionInfo({ onSaveEducation, educationSections }) {
   const [schoolValue, setSchoolValue] = useState("");
   const [degreeValue, setDegreeValue] = useState("");
   const [dateValue, setDateValue] = useState("");
@@ -101,10 +101,21 @@ export default function EduactionInfo({ onSaveEducation }) {
           </form>
         )}
         {isAddButtonVisible && (
-          <div className="education-info-add-new-btn-container">
-            <button className="add-new-btn" onClick={handleAddEducation}>
-              <p>+ Add New</p>
-            </button>
+          <div className="education-info-main">
+            {educationSections.length > 0 && (
+              <div className="education-info-sections-container">
+                {educationSections.map((section, index) => (
+                  <div className="section-form" key={index}>
+                    <h3>{section.school}</h3>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="education-info-add-new-btn-container">
+              <button className="add-new-btn" onClick={handleAddEducation}>
+                <p>+ Add New</p>
+              </button>
+            </div>
           </div>
         )}
       </div>
