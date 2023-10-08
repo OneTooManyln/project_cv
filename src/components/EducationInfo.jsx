@@ -30,6 +30,9 @@ export default function EduactionInfo({ onSaveEducation, educationSections }) {
     setDegreeValue("");
     setDateValue("");
     setLocationValue("");
+
+    setIsEducationFormVisible(false);
+    setIsAddButtonVisible(true);
   };
 
   const handleCancel = () => {
@@ -37,6 +40,7 @@ export default function EduactionInfo({ onSaveEducation, educationSections }) {
     setDegreeValue("");
     setDateValue("");
     setLocationValue("");
+
     setIsEducationFormVisible(false);
     setIsAddButtonVisible(true);
   };
@@ -48,7 +52,11 @@ export default function EduactionInfo({ onSaveEducation, educationSections }) {
           <h2>Education Info</h2>
         </div>
         {isEducationFormVisible && (
-          <form className="education-info-form" autocomplete="off">
+          <form
+            className="education-info-form"
+            onSubmit={handleSaveEducation}
+            autocomplete="off"
+          >
             <div className="inputs-container">
               <input
                 type="text"
@@ -90,11 +98,7 @@ export default function EduactionInfo({ onSaveEducation, educationSections }) {
               <button className="cancel-btn" onClick={handleCancel}>
                 Cancel
               </button>
-              <button
-                className="save-btn"
-                type="submit"
-                onClick={handleSaveEducation}
-              >
+              <button className="save-btn" type="submit">
                 Save
               </button>
             </div>
