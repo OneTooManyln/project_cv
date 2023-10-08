@@ -19,10 +19,18 @@
   gap: 15px;
 }
 
+.education-info-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .section-form {
   color: black;
-  border-top: 2px solid rgb(128, 128, 128, 0.26);
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  border-radius: 5px;
   padding: 10px 10px;
+  background-color: whitesmoke;
 }
 
 .section-form:hover {
